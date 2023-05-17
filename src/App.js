@@ -9,9 +9,16 @@ import { UserContext } from "./context/UserContext";
 import { ThemeContext } from "./context/ThemeContext";
 
 const App = () => {
+  const api_url = "https://jsonplaceholder.typicode.com/comments"
   const { user } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
 
+   async function getapi(url){
+     const res = await fetch(url);
+     var data = await res.json();
+     console.log(data);
+   }
+   getapi(api_url);
   return (
     <StyledThemeProvider theme={theme}>
       <GlobalStyle />
